@@ -8,17 +8,32 @@ def GetCoef(index, prompt):
             coef = float(coefStr)
             if index == 1 and coef == 0:
                 raise ValueError("Коэффициент A не может равняться нулю.")
+            
             return coef
-        except (ValueError, IndexError):
-            print(prompt)
-            coefStr = input()
+        
+        except IndexError:
+            print("Аргумент не был передан через командную строку.")
+            coefStr = input(prompt)
             try:
                 coef = float(coefStr)
                 if index == 1 and coef == 0:
                     raise ValueError("Коэффициент A не может равняться нулю.")
                 return coef
-            except ValueError as e:
-                print(e)
+            except ValueError:
+                print("Ошибка: Пожалуйста, введите корректное число.")
+
+        except ValueError:
+            print("Ошибка: Коэффицент некорректен.")
+            coefStr = input(prompt)
+            try:
+                coef = float(coefStr)
+                if index == 1 and coef == 0:
+                    raise ValueError("Коэффициент A не может равняться нулю.")
+                return coef
+            except ValueError:
+                print("Ошибка: Пожалуйста, введите корректное число.")
+
+
 
 def Solution(a, b, c):
 
